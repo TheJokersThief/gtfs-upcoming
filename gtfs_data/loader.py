@@ -89,6 +89,9 @@ def Load(filename: str, keep: Dict[str, AbstractSet[str]]=None) -> List[Dict[str
   pool = BufferedExecutor(max_workers=MaxThreads)
   futures = []
 
+  if not os.path.exists(filename):
+    raise Exception("You're missing data! Download GTFS data from https://www.transportforireland.ie/transitData/google_transit_combined.zip")
+
   # We will read MaxRowsPerChunk into a StringIO, then pass it to a worker
   # to parse the CSV.
   with open(filename) as f:
