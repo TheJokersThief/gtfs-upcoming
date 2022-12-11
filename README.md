@@ -21,7 +21,7 @@ The display previously relied on the now-deprecated SmartDublin RTPI service.
 ## Usage
 
 ```sh
-% main.py --config=config.ini --env=prod --port=6824 --promport=8000
+% poetry run python main.py --config=config.ini --env=prod --port=6824 --promport=8000
 ...
 2020/08/23 08:58:09    INFO Starting HTTP server on port 6824
 ```
@@ -72,17 +72,6 @@ Endpoint | Arguments | Notes
 /scheduled.json | ?stop=123&stop=456 | Shows just scheduled data for stops 123 and 456
 /debugz | _(none)_ | Debug endpoint for GTFS API calls
 :8000 | _(none)_ | Prometheus metrics, if --promport is specified
-
-## Build
-
-This project is built with [Bazel](http://bazel.build). If you have bazel,
-then building/running is trivial:
-
-```sh
-% bazel run :main -- [--config CONFIG] [--env {prod,test}] [--gtfs GTFS] [--port PORT]
-```
-
-The BUILD file also defines a Debian (.deb) build target.
 
 ## Data and Configuration
 

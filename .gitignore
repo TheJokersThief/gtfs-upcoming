@@ -5,3 +5,8 @@
 # Ignore some Python caches
 /.mypy_cache
 /__pycache__
+*.pyc
+
+# Real file
+config.ini
+google_transit_combined
