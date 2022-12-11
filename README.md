@@ -2,6 +2,22 @@
 
 # gtfs-upcoming
 
+<!-- TOC -->
+
+- [gtfs-upcoming](#gtfs-upcoming)
+    - [What](#what)
+    - [Usage](#usage)
+    - [Docker](#docker)
+        - [Sample Output](#sample-output)
+        - [Endpoints](#endpoints)
+    - [Data and Configuration](#data-and-configuration)
+        - [GTFS Data](#gtfs-data)
+        - [config.ini](#configini)
+            - [API Keys](#api-keys)
+            - [Optional Interesting Stop Ids](#optional-interesting-stop-ids)
+
+<!-- /TOC -->
+
 ## What
 
 This consumes a GTFS realtime feed and produces a list of upcoming
@@ -27,6 +43,35 @@ The display previously relied on the now-deprecated SmartDublin RTPI service.
 ```
 
 Then browse to http://127.0.0.1:6824/upcoming.json
+
+## Docker
+
+To build:
+
+```bash
+docker build -t gtfs-upcoming:latest .
+```
+
+To download the base static data:
+
+```bash
+mkdir -p `pwd`/config
+wget -O `pwd`/config/google_transit_combined.zip https://www.transportforireland.ie/transitData/google_transit_combined.zip
+unzip `pwd`/config/google_transit_combined.zip -d `pwd`/config/google_transit_combined
+
+```
+
+To create an (empty) config file [see below section for sign up details]:
+
+```
+cp `pwd`/config-sample.ini `pwd`/config/config.ini
+```
+
+To run:
+
+```bash
+docker run gtfs-upcoming --volume `pwd`/config:/config
+```
 
 ### Sample Output
 
