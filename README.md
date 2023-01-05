@@ -6,8 +6,8 @@
 
 - [gtfs-upcoming](#gtfs-upcoming)
     - [What](#what)
-    - [Usage](#usage)
     - [Docker](#docker)
+    - [Usage](#usage)
         - [Sample Output](#sample-output)
         - [Endpoints](#endpoints)
     - [Data and Configuration](#data-and-configuration)
@@ -33,16 +33,6 @@ This was developed against the Irish [NTA's GTFS-R feed](https://developer.natio
 
 This is part of a personal project for an live upcoming transit display.
 The display previously relied on the now-deprecated SmartDublin RTPI service.
-
-## Usage
-
-```sh
-% poetry run python main.py --config=config.ini --env=prod --port=6824 --promport=8000
-...
-2020/08/23 08:58:09    INFO Starting HTTP server on port 6824
-```
-
-Then browse to http://127.0.0.1:6824/upcoming.json
 
 ## Docker
 
@@ -72,6 +62,16 @@ To run:
 ```bash
 docker run gtfs-upcoming --volume `pwd`/config:/config
 ```
+
+## Usage
+
+```sh
+% poetry run python main.py --config=config.ini --env=prod --port=6824 --promport=8000
+...
+2020/08/23 08:58:09    INFO Starting HTTP server on port 6824
+```
+
+Then browse to http://127.0.0.1:6824/upcoming.json
 
 ### Sample Output
 
